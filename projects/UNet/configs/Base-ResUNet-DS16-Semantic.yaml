@@ -1,0 +1,28 @@
+MODEL:
+  META_ARCHITECTURE: "SemanticSegmentor"
+  BACKBONE:
+    NAME: "build_resunet_backbone"
+    FREEZE_AT: 0
+    UNET_CHANNELS: [64, 128, 256, 512, 1024]
+  SEM_SEG_HEAD:
+    NAME: "UnetSemSegHead"
+    NUM_CLASSES: 3
+    IGNORE_VALUE: 255
+    SEM_SEG_LOSS_TYPE: "CrossEntropy"
+DATASETS:
+  TRAIN: ("MyDataset_Train",)
+  TEST: ("MyDataset_Test",)
+DATALOADER:
+  NUM_WORKERS: 8
+INPUT:
+  MIN_SIZE_TRAIN: (512, 612)
+  CROP:
+    ENABLED: True
+    TYPE: "absolute"
+    SIZE: (384, 384)
+SOLVER:
+  CHECKPOINT_PERIOD: 5000
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.01
+  MAX_ITER: 90000
+OUTPUT_DIR: './output/'

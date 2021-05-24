@@ -1,0 +1,12 @@
+
+def add_unet_config(cfg):
+
+    # UNet settings
+    cfg.MODEL.BACKBONE.ACTIVATION = 'relu'
+    cfg.MODEL.BACKBONE.UNET_CHANNELS = [64, 128, 256, 512, 1024]
+
+    cfg.MODEL.SEM_SEG_HEAD.UNETPP_USE_SUBNET_IN_INFERENCE = 0
+    cfg.MODEL.SEM_SEG_HEAD.SEM_SEG_LOSS_TYPE = 'CrossEntropy'
+    
+    cfg.INPUT.ENABLE_RANDOM_BRIGHTNESS = None
+    cfg.INPUT.ENABLE_RANDOM_CONTRAST = None
