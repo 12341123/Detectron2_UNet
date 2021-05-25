@@ -1,4 +1,4 @@
-# Pytorch Unofficial Implementation of UNet family based on Detectron2
+# Pytorch Implementation of UNet family based on Detectron2
 
 Currently supports:
 
